@@ -57,6 +57,10 @@ h1 {
 h2 {
   text-align: center;
 }
+canvas { 
+    border: 1px solid #555;
+    margin-top: 10px;
+}
 .secpart {
   width: 400px;
   float: left;
