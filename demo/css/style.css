@@ -42,11 +42,6 @@
 .clear {
   clear: both;
 }
-#wrap {
-  width: 800px;
-  margin-left: auto;
-  margin-right: auto;
-}
 h1 {
   font-size: 16px;
   color: #333;
@@ -60,6 +55,10 @@ h2 {
 canvas { 
     border: 1px solid #555;
     margin-top: 10px;
+}
+input[type="submit"]
+{
+  margin: 3px;
 }
 .secpart {
   width: 400px;
@@ -93,14 +92,29 @@ canvas {
   margin: 1px;
   padding: 1px;
 }
+.pane {
+  width: 395px;
+  display: inline-block;
+  vertical-align: top;
+}
 #testset_acc {
   /* margin-bottom: 200px; */
 }
 #testset_vis {
+  /* margin-bottom: 200px; */
+}
+#wrap {
+  background-color: white;
+  width: 800px;
+  padding: 5px;
+  border-radius: 5px;
+  margin-left: auto;
+  margin-right: auto;
   margin-bottom: 200px;
 }
 body {
   font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+  background-color: gray;
   /* color: #333; */
   /* padding: 20px; */
 }
