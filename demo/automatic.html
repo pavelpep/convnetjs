@@ -32,27 +32,27 @@
     This demo illustrates the usage of ConvNetJS' <b>MagicNet</b> class, which performs fully automatic prediction given your arbitrary data. Internally, the MagicNet tries out many different types of networks, performs cross-validations of network hyper-parameters across folds of your data, and creates a final classifier by model averaging the best architectures. The API for MagicNet looks as follows:
     </p>
 
-<pre class="brush: js; toolbar: false;">
-var opts = {}; // options struct
-opts.train_ratio = 0.7;
-opts.num_folds = 10; // number of folds to eval per candidate
-opts.num_candidates = 10; // number of candidates to eval in parallel
-opts.num_epochs = 50; // epochs to make through data per fold
-// below, train_data is a list of input Vols and train_labels is a 
-// list of integer correct labels (in 0...K).
-var magicNet = new convnetjs.MagicNet(train_data, train_labels, opts);
-magicNet.onFinishBatch(finishedBatch); // example of setting callback for events
+    <pre class="brush: js; toolbar: false;">
+    var opts = {}; // options struct
+    opts.train_ratio = 0.7;
+    opts.num_folds = 10; // number of folds to eval per candidate
+    opts.num_candidates = 10; // number of candidates to eval in parallel
+    opts.num_epochs = 50; // epochs to make through data per fold
+    // below, train_data is a list of input Vols and train_labels is a 
+    // list of integer correct labels (in 0...K).
+    var magicNet = new convnetjs.MagicNet(train_data, train_labels, opts);
+    magicNet.onFinishBatch(finishedBatch); // example of setting callback for events
 
-// start training magicNet. Every step() call all candidates train on one example
-setInterval(function(){ magicNet.step() }, 0});
+    // start training magicNet. Every step() call all candidates train on one example
+    setInterval(function(){ magicNet.step() }, 0});
 
-// once at least one batch of candidates is evaluated on all folds we can do prediction!
-function finishedBatch() {
-  // prediction example. xout is Vol of scores
-  // there is also predict_soft(), which returns the full score volume for all labels
-  var predicted_label = magicNet.predict(some_test_vol);
-}
-</pre>
+    // once at least one batch of candidates is evaluated on all folds we can do prediction!
+    function finishedBatch() {
+      // prediction example. xout is Vol of scores
+      // there is also predict_soft(), which returns the full score volume for all labels
+      var predicted_label = magicNet.predict(some_test_vol);
+    }
+    </pre>
 
     <h1>Your data</h1>
     <p>
@@ -74,8 +74,7 @@ function finishedBatch() {
       <button class="clouds-flat-button" onclick="loadDB('data/yeast.data.txt')" style="height: 40px; width: 260px; margin-bottom: 5px;">Fill Yeast data</button>
     </div>
 
-    <textarea id="data-ta" style="width:100%; height:200px;">
-    </textarea>
+    <textarea id="data-ta" style="width:100%; height:200px;"></textarea>
 
     <button class="clouds-flat-button" onclick="importTrainData()" style="width: 200px; height: 40px; margin-top: 5px;">Import Data</button>
     (and send <input type="text" id="testsplit" maxlength="3" value="20" style="width:40px;">% of imported data randomly into Test Set below)
@@ -86,29 +85,29 @@ function finishedBatch() {
     <h1>Cross-Validation</h1>
     
     <div>
-    <input type="text" id="labelix" maxlength="4" value="-1" style="width:40px;">
-    Index of column to classify as target. (e.g. 0 = first column, -1 = last column)
+      <input type="text" id="labelix" maxlength="4" value="-1" style="width:40px;">
+      Index of column to classify as target. (e.g. 0 = first column, -1 = last column)
     </div>
 
     <div>
-    <input type="text" id="trainp" name="train_split" maxlength="3" value="70" style="width:20px;">
-    Percent of data to use for training (rest will be validation)
+      <input type="text" id="trainp" name="train_split" maxlength="3" value="70" style="width:20px;">
+      Percent of data to use for training (rest will be validation)
     </div>
 
     <div>
-    <input type="text" id="foldsnum" name="folds_number" maxlength="3" value="3" style="width:40px;"> Number of data folds to evaluate per candidate
+      <input type="text" id="foldsnum" name="folds_number" maxlength="3" value="3" style="width:40px;"> Number of data folds to evaluate per candidate
     </div>
 
     <div>
-    <input type="text" id="candsnum" name="candidates_number" maxlength="4" value="50" style="width:40px;"> Number of candidates in a batch, to evaluate in parallel
+      <input type="text" id="candsnum" name="candidates_number" maxlength="4" value="50" style="width:40px;"> Number of candidates in a batch, to evaluate in parallel
     </div>
 
     <div>
-    <input type="text" id="epochsnum" name="epochs_number" maxlength="4" value="40" style="width:40px;"> Number of epochs to make over each fold
+      <input type="text" id="epochsnum" name="epochs_number" maxlength="4" value="40" style="width:40px;"> Number of epochs to make over each fold
     </div>
 
     <div>
-    Number of Neurons in each layer: Min <input type="text" id="nnmin" maxlength="4" value="5" style="width:40px;"> Max <input type="text" id="nnmax" maxlength="4" value="30" style="width:40px;"> 
+      Number of Neurons in each layer: Min <input type="text" id="nnmin" maxlength="4" value="5" style="width:40px;"> Max <input type="text" id="nnmax" maxlength="4" value="30" style="width:40px;"> 
     </div>
 
     <!--
@@ -154,7 +153,7 @@ function finishedBatch() {
     </p>
     
     <div>
-    <input type="text" id="ensemblenum" maxlength="3" value="10" style="width:20px;"> Number of best models to average in the ensemble network
+      <input type="text" id="ensemblenum" maxlength="3" value="10" style="width:20px;"> Number of best models to average in the ensemble network
     </div>
 
     <textarea id="data-te" style="width:100%; height:200px;">
@@ -166,15 +165,14 @@ function finishedBatch() {
 
     <h1>Export Best Network</h1>
     <button class="clouds-flat-button" onclick="exportMagicNet()" style="width: 200px; height: 40px; margin-top: 5px;">Export</button><br><br>
-    <textarea id="taexport" style="width:100%; height:200px;">
-    </textarea>
+    <textarea id="taexport" style="width:100%; height:200px;"></textarea>
 
     Above you can export a trained MagicNet in JSON format. The exported MagicNet is simply a thin wrapper around a list of the best networks that were discovered during cross-validation and it can be loaded and used again as follows:
-<pre class="brush: js; toolbar: false;">
-var magicNet = new convnetjs.MagicNet();
-magicNet.fromJSON(json);
-magicNet.predict(some_vol); // ready to use!
-</pre>
+    <pre class="brush: js; toolbar: false;">
+    var magicNet = new convnetjs.MagicNet();
+    magicNet.fromJSON(json);
+    magicNet.predict(some_vol); // ready to use!
+    </pre>
     
     <br><br><br><br><br><br><br><br>
     

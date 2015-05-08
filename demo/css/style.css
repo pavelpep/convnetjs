@@ -103,6 +103,11 @@ input[type="submit"]
 #testset_vis {
   /* margin-bottom: 200px; */
 }
+#gallery img {
+  width: 195;
+  height: 195px;
+  display: inline-block;
+}
 #wrap {
   background-color: white;
   width: 800px;
