@@ -19,20 +19,23 @@
 <body>
   <div id="wrap">
     <h2 style="text-align: center;"><a href="http://cs.stanford.edu/people/karpathy/convnetjs/">ConvNetJS</a> Denoising Autoencoder demo</h2>
-    <h1>Description</h1>
-    <p>
-      All the other demos are examples of Supervised Learning, so in this demo I wanted to show an example of Unsupervised Learning. We are going to train an autoencoder on MNIST digits.
-    </p>
-    <p>
-      An autoencoder is a regression task where the network is asked to predict its input (in other words, model the identity function). Sounds simple enough, except the network has a tight bottleneck of a few neurons in the middle (in the default example only two!), forcing it to create effective representations that compress the input into a low-dimensional code that can be used by the decoder to reproduce the original input.
-    </p>
-    <p>
-      Report questions/bugs/suggestions to <a href="https://twitter.com/karpathy">@karpathy</a>.
-    </p>
-    <h1>Training Stats</h1>
     <div class="divsec">
+      <h1>Description</h1>
+      <p>
+        All the other demos are examples of Supervised Learning, so in this demo I wanted to show an example of Unsupervised Learning. We are going to train an autoencoder on MNIST digits.
+      </p>
+      <p>
+        An autoencoder is a regression task where the network is asked to predict its input (in other words, model the identity function). Sounds simple enough, except the network has a tight bottleneck of a few neurons in the middle (in the default example only two!), forcing it to create effective representations that compress the input into a low-dimensional code that can be used by the decoder to reproduce the original input.
+      </p>
+      <p>
+        Report questions/bugs/suggestions to <a href="https://twitter.com/karpathy">@karpathy</a>.
+      </p>
+    </div>
+    <div class="divsec">
+      <h1>Training Stats</h1>
       <div class="secpart">
-        Current image: <img id="input_image" src=""></img><input id="buttontp" type="submit" value="pause" onclick="toggle_pause();"/>
+        Current image: <img id="input_image" src=""></img>
+        <input id="buttontp" type="submit" value="pause" onclick="toggle_pause();"/>
         <div id="trainstats"></div>
 
         <div id="controls">
@@ -41,8 +44,10 @@
           <br />
         </div>
 
-        <input id="buttondj" type="submit" value="save network snapshot as JSON" onclick="dump_json();"/><br />
-        <input id="buttonlfj" type="submit" value="init network from JSON snapshot" onclick="load_from_json();"/><br />
+        <input id="buttondj" type="submit" value="save network snapshot as JSON" onclick="dump_json();"/>
+        <br />
+        <input id="buttonlfj" type="submit" value="init network from JSON snapshot" onclick="load_from_json();"/>
+        <br />
         <textarea id="dumpjson"></textarea>
       </div>
       <div class="secpart">
@@ -72,10 +77,9 @@
     </div>
 
     <div class="divsec">
-    <h1>Network Visualization</h1>
+      <h1>Network Visualization</h1>
       <div id="visnet"></div>
     </div>
-
   </div>  
 </body>
 </html>
