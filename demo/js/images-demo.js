@@ -42,6 +42,9 @@ var sample_training_instance = function() {
     x = convnetjs.augment(x, image_dimension, 0, 0, Math.random()<0.5); //maybe flip horizontally
   }
 
+  if(random_rotate){
+    x = convnetjs.augment(x, image_dimension, 0, 0, false, Math.random()<0.5); //maybe rotate by 90 degrees
+  }
   var isval = use_validation_data && n%10===0 ? true : false;
   return {x:x, label:labels[n], isval:isval};
 }
@@ -71,7 +74,7 @@ var sample_test_instance = function() {
   // distort position and maybe flip
   var xs = [];
   
-  if (random_flip || random_position){
+  if (random_flip || random_position || random_rotate){
     for(var k=0;k<6;k++) {
       var test_variation = x;
       if(random_position){
@@ -83,7 +86,10 @@ var sample_test_instance = function() {
       if(random_flip){
         test_variation = convnetjs.augment(test_variation, image_dimension, 0, 0, Math.random()<0.5); 
       }
-
+      
+      if(random_rotate){
+        test_variation = convnetjs.augment(test_variation, image_dimension, 0, 0, false, Math.random()<0.5); //maybe rotate by 90 degrees
+      }
       xs.push(test_variation);
     }
   }else{
